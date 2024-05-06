@@ -1,7 +1,7 @@
 /*
-Alunno: Mattia Borroni
-Data: 20.10.2023
-Titolo esercizio: Esercizio Conta parole
+Alunni: Borroni-Balducci-Ruffino-Sinigallia
+Data: 06-05-2024
+Titolo esercizio: Battaglia navale compito finale
 Comando di compilazione:
 Note:
 */
@@ -9,8 +9,26 @@ Note:
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <conio.h>
 
 using namespace std;
+
+void Scritta{
+    cout<<" ____       ______      ______    ______    ______      ____       __         ______      ______     "<<endl;
+    cout<<"/\  _`\    /\  _  \    /\__  _\  /\__  _\  /\  _  \    /\  _`\    /\ \       /\__  _\    /\  _  \    "<<endl;
+    cout<<"\ \ \L\ \  \ \ \L\ \   \/_/\ \/  \/_/\ \/  \ \ \L\ \   \ \ \L\_\  \ \ \      \/_/\ \/    \ \ \L\ \   "<<endl;
+    cout<<" \ \  _ <'  \ \  __ \     \ \ \     \ \ \   \ \  __ \   \ \ \L_L   \ \ \  __    \ \ \     \ \  __ \  "<<endl;
+    cout<<"  \ \ \L\ \  \ \ \/\ \     \ \ \     \ \ \   \ \ \/\ \   \ \ \/, \  \ \ \L\ \    \_\ \__   \ \ \/\ \ "<<endl;
+    cout<<"   \ \____/   \ \_\ \_\     \ \_\     \ \_\   \ \_\ \_\   \ \____/   \ \____/    /\_____\   \ \_\ \_\"<<endl;
+    cout<<"    \/___/     \/_/\/_/      \/_/      \/_/    \/_/\/_/    \/___/     \/___/     \/_____/    \/_/\/_/"<<endl<<endl<<endl<<endl;
+    cout<<"                       __  __      ______      __  __     ______      __         ____      "<<endl;
+    cout<<"                      /\ \/\ \    /\  _  \    /\ \/\ \   /\  _  \    /\ \       /\  _`\    "<<endl;
+    cout<<"                      \ \ `\\ \   \ \ \L\ \   \ \ \ \ \  \ \ \L\ \   \ \ \      \ \ \L\_\  "<<endl;
+    cout<<"                       \ \ , ` \   \ \  __ \   \ \ \ \ \  \ \  __ \   \ \ \  __  \ \  _\L  "<<endl;
+    cout<<"                        \ \ \`\ \   \ \ \/\ \   \ \ \_/ \  \ \ \/\ \   \ \ \L\ \  \ \ \L\ \"<<endl;
+    cout<<"                         \ \_\ \_\   \ \_\ \_\   \ `\___/   \ \_\ \_\   \ \____/   \ \____/"<<endl;
+    cout<<"                          \/_/\/_/    \/_/\/_/    `\/__/     \/_/\/_/    \/___/     \/___/ "<<endl;
+}
 
 int main()
 {
@@ -18,9 +36,9 @@ int main()
 //variabili
     srand(time(NULL));
     
-    int nave1oriz=rand()%6+1;
-    int nave1vert=rand()%6+1;
-    int nave2oriz=rand()%6+1;
+    int nave1oriz=rand()%10+1;
+    int nave1vert=rand()%10+1;
+    int nave2oriz=rand()%10+1;
     int nave2vert=rand()%6+1;
     int nave1aff=0;
     int nave2aff=0;
@@ -28,7 +46,13 @@ int main()
     char coord [9][9]={{"        "},{"        "},{"        "},{"        "},{"        "},{"        "},{"        "},{"        "}};
     int oriz=0;
     int vert=0;
-   
+
+
+//Cancella schermo
+    clrscr();
+
+
+    
 
 //inizio
 
