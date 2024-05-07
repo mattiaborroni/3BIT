@@ -3,7 +3,7 @@ Alunni: Borroni-Balducci-Ruffino-Sinigallia
 Data: 06-05-2024
 Titolo esercizio: Battaglia navale compito finale
 Comando di compilazione:
-Note: VERSIONE 1.4
+Note:
 */
 
 #include <iostream>
@@ -41,13 +41,13 @@ void scritta(){
 void stampacampo(char campo1[N][N],char campo2[N][N])
 {
     
-    cout<<"\t*******************************************************\n";
-    cout<<"\t**************   CAMPO BATTAGLIA      *****************\n";
-    cout<<"\t*******************************************************\n";
+    cout<<"\t\t**********************************************************\n";
+    cout<<"\t\t**************   CAMPO BATTAGLIA      ********************\n";
+    cout<<"\t\t**********************************************************\n\n\n";
     
-    cout<<"\t***********************\t *******************************\n";
-    cout<<"\tA B C D E F G H I J   |\t|\tA B C D E F G H I J    |\n";
-    cout<<"\t-------------------\t------------------------------\n";
+    cout<<"\t\tCAMPO GIOCATORE"<<"\t\t\t   CAMPO AVVERSARIO CPU\n\n";
+    cout<<"\t   A B C D E F G H I J |\t\t  A B C D E F G H I J |\n";
+    cout<<"\t------------------------\t\t-----------------------\n";
     
     for (int x=0;x<N;x++) {
         
@@ -82,7 +82,7 @@ int main()
     
     scritta();
     
-    cout<<"\n Premere ENTER per proseguire";
+    cout<<"\n\nPremere ENTER per proseguire";
     cin.get();
 
     pulisci();
@@ -111,7 +111,3 @@ int main()
 // inserimento coordinate
 
 }
-
-
-}
-
