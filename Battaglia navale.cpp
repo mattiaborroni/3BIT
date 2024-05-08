@@ -2,15 +2,15 @@
 Alunni: Borroni-Balducci-Ruffino-Sinigallia
 Data: 06-05-2024
 Titolo esercizio: Battaglia navale compito finale
-Comando di compilazione:
-Note: v2.0
+Comando di compilazione: v2.1
+Note:
 */
 
 #include <iostream>
 #include <string>
 #include <stdlib.h>
 
-#define N 10 //Dimensione griglia 
+#define N 9 //Dimensione griglia 
 
 using namespace std;
 
@@ -20,11 +20,18 @@ void pulisci(){
 }
 
 void premi(){
-    cout<<"\n\nPremere ENTER per proseguire";
+    cout<<"\nPremere ENTER per proseguire";
     cin.get();
     
 }
 
+void inizializzacampo(char campo[N][N]){
+    for (int x=0;x<N;x++){
+        for (int y=0;y<N;y++){
+            campo[x][y]=32;
+        }
+    }
+}
 
 void scritta(){
 
@@ -52,19 +59,19 @@ void stampacampo(char campo1[N][N],char campo2[N][N])
     cout<<"\t\t**************   CAMPO BATTAGLIA      ********************\n";
     cout<<"\t\t**********************************************************\n\n\n";
     
-    cout<<"\t\tCAMPO GIOCATORE"<<"\t\t\t   CAMPO AVVERSARIO CPU\n\n";
-    cout<<"\t   A B C D E F G H I J |\t\t  A B C D E F G H I J |\n";
-    cout<<"\t------------------------\t\t-----------------------\n";
+    cout<<"\t\tCAMPO GIOCATORE"<<"\t\t\t CAMPO AVVERSARIO CPU\n\n";
+    cout<<"\t   A B C D E F G H I  \t\t  A B C D E F G H I  \n";
+    cout<<"\t ---------------------\t\t---------------------\n";
     
     for (int x=0;x<N;x++) {
         
-        cout<<"    |"<<x+1<<"\t|  ";
+        cout<<"      |"<<x+1<<"|  ";
         
         for(int y=0;y<N;y++){
             cout<<campo1[x][y]<<" ";
         }
         
-        cout<<"                      |"<<x+1<<"\t| ";
+        cout<<"\t     |"<<x+1<<"|  ";
         for(int y=0;y<N;y++){
             cout<<campo2[x][y]<<" ";
         }
@@ -74,14 +81,58 @@ void stampacampo(char campo1[N][N],char campo2[N][N])
    cout<<"\n\n";
 }
 
-void inseriscinave(char campo1[N][N],char coord[2],int orien,int lung){
-    int x=coord [0]-30;
-    int y=coord [1]-30;
-    cout<<"X="<<x<<endl;
-    cout<<"y="<<y<<endl;
+bool inseriscinave(char campo[N][N],char coord[2],int orient,int lun,int numnave){
+    int y=(coord[0]%32)-1;
+    int x=(coord[1]%48)-1;
+    bool ok=0;
     
-    campo1[x][y]=42;
-    premi();
+ // Verifica se le coordinate della nave e la lunghezza sono compatibilicon il campo
+
+ if (y+lun>N+1 | x+lun>N+1){
+    ok=0;
+    return ok;
+ }   
+// Verifica se le caselle per inserire la nave sono libere
+
+    if (orient==0){
+        for (int i=0;i<lun;i++){
+            if (campo[x][y+i]==32){
+                ok=1;
+                }
+            else {
+                ok=0;
+                break;
+                }
+                
+        }
+    }
+    if(orient==1){
+        for (int i=0;i<lun;i++){
+            if (campo[x+i][y]==32){
+                ok=1;
+                }
+            else {
+                ok=0;
+                break;
+                }
+                
+            
+        }
+    }
+    
+    if (ok==1){
+        for (int i=0;i<lun;i++){
+            if (orient==0){
+                campo[x][y+i]=numnave+48;
+            }
+            else if (orient==1){
+                campo[x+i][y]=numnave+48;
+                
+            }
+        }
+    }
+    
+    return ok;
 }
 
 int main()
@@ -90,12 +141,16 @@ int main()
     
 //variabili principali
     
-    char campo1[N][N]={};
-    char campo2[N][N]={};
+    char campo1[N][N]={ };
+    char campo2[N][N]={ };
     char coord[2]={};
     int orientamento=0;
-    int lunghezzanave[8]={0,5,4,4,3,3,2};
+    int lunghezzanave[7]={0,5,4,3,3,2};
     int lung=0;
+    bool ok=0;
+    inizializzacampo(campo1);
+    inizializzacampo(campo2);
+    
 //Prima schermata
     
     scritta();
@@ -111,23 +166,35 @@ int main()
     stampacampo(campo1,campo2);
     
     cout<<"Inseriamo ora le navi... ti ricordo che dovrai inserire:\n";
-    cout<<"1 nave da 5\n2 navi da 4\n2navi da 3\n1 nave da2\n";
+    cout<<"1 nave da 5\n1 navi da 4\n1 navE da 3\n1 nave da2\n";
+
     premi();
     
     
-for (int i=1;i<6;i++){
-    stampacampo(campo1,campo2);
+    for (int i=1;i<6;i++){
+
+    do{
+        stampacampo(campo1,campo2);
     
-    cout<<"inserisce coordinate nave "<<i<<" ";
-    cin>>coord;
+        cout<<"inserisce coordinate nave "<<i<<" ";
+        cin>>coord;
     
-    cout<<"\ninserire orientamento nave "<<i<<" ";
-    cin>>orientamento;
+        cout<<"\ninserire orientamento nave "<<i<<" ";
+        cin>>orientamento;
     
-    lung=lunghezzanave[i];
+        lung=lunghezzanave[i];
     
-    inseriscinave(campo1,coord,orientamento,lung);
+        ok=inseriscinave(campo1,coord,orientamento,lung,i);
         
+        if (ok==0){
+            cout<<"\n\acoordinate non compatibili per inserimento nave";
+            cin.get();
+            premi();
+            }
+        
+    }while (ok==0);
+    
+    
     }
    
     
