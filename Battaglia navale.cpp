@@ -2,7 +2,7 @@
 Alunni: Borroni-Balducci-Ruffino-Sinigallia
 Data: 06-05-2024
 Titolo esercizio: Battaglia navale compito finale
-Comando di compilazione: v2.2
+Comando di compilazione: v2.3
 Note:
 */
 
@@ -92,7 +92,7 @@ bool inseriscinave(char campo[N][N],char coord[2],int orient,int lun,int numnave
     int y=(coord[0]%32)-1;
     int x=(coord[1]%48)-1;
     bool ok=0;
-    int lung=lun;
+    
  // Verifica se le coordinate della nave e la lunghezza sono compatibilicon il campo
 
  if (y+lun>N || x+lun>N){
@@ -142,6 +142,21 @@ bool inseriscinave(char campo[N][N],char coord[2],int orient,int lun,int numnave
     return ok;
 }
 
+void spara(char campo[N][N],char coord[2],int navecolpita[5]){
+    int y=(coord[0]%32)-1;
+    int x=(coord[1]%48)-1;
+    int nave=campo[x][y]-48;
+    if (campo[x][y]==32){
+        cout<<"ACQUA!!!!!!!!\n";
+        campo[x][y]=45;
+    }
+    else {
+        cout<<" HAI COLPITO NAVE "<<nave<<" !!!!\n";
+        navecolpita[nave]=1;
+        campo[x][y]=35;
+    }
+}
+
 //**************************************************************
 //INIZIO CODICE MAIN
 //**************************************************************
@@ -158,6 +173,10 @@ int main(){
     int lunghezzanave[7]={0,5,4,3,3,2};
     int lung=0;
     bool ok=0;
+    int navigiocatore1colpite[6]={0,0,0,0,0,0};
+    int navigiocatore2colpite[6]={0,0,0,0,0,0};
+    
+//pulitura array campi    
     inizializzacampo(campo1);
     inizializzacampo(campo2);
     
@@ -217,10 +236,48 @@ int main(){
     }while (ok==0);
     
     }
+    
+    
+    do{
     stampacampo(campo1,campo2);
     
+    cout<<"Ora inizia il gioco... inserisci le cordiate del tuo primo colpo...\n";
+    cout<<"Ricorda che per affondare una nave basta un solo colpo a segno...\n";
+    
+    cout<<"INSERISCI COORDINATE DI TIRO...... ";
+    cin>>coord;
+    spara(campo2,coord,navigiocatore2colpite);
+    
+    cout<<"ORA TOCCA AL COMPUTER.....";
+    coord[0]=rand()%9+65;
+    coord[1]=rand()%9+49;
+    spara(campo1,coord,navigiocatore1colpite);
+    
+    premi();
+    
+        
+    } while (not(navigiocatore1colpite[1]==1 && navigiocatore1colpite[2]==1 && navigiocatore1colpite[3]==1 && navigiocatore1colpite[4]==1 && navigiocatore1colpite[5]==1));
     
     
     
-// Fine programma   
+    
+   
 }
+    
+
+    
+    
+    
+
+    
+    
+
+
+
+
+    
+ 
+// inserimento coordinate
+
+ 
+// inserimento coordinate
