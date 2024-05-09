@@ -2,7 +2,7 @@
 Alunni: Borroni-Balducci-Ruffino-Sinigallia
 Data: 06-05-2024
 Titolo esercizio: Battaglia navale compito finale
-Comando di compilazione: v2.1
+Comando di compilazione: v2.2
 Note:
 */
 
@@ -21,7 +21,10 @@ void pulisci(){
 
 void premi(){
     cout<<"\nPremere ENTER per proseguire";
-    cin.get();
+    cin.clear();
+    cin.ignore(10000, '\n');
+    
+   
     
 }
 
@@ -92,7 +95,7 @@ bool inseriscinave(char campo[N][N],char coord[2],int orient,int lun,int numnave
     
  // Verifica se le coordinate della nave e la lunghezza sono compatibilicon il campo
 
- if (y+lun>N+1 || x+lun>N+1){
+ if (y+lun>N || x+lun>N){
     ok=0;
     return ok;
  }   
@@ -138,41 +141,18 @@ bool inseriscinave(char campo[N][N],char coord[2],int orient,int lun,int numnave
     
     return ok;
 }
-void posizionaNavi(char coord[9][9])
-{
-    srand(time(NULL));
-    int nave1Orizz = rand() % 7;
-    int nave1Vert = rand() % 7;
-    int nave2Orizz = rand() % 7;
-    int nave2Vert = rand() % 7;
 
-    // Posiziona nave 1
-    coord[nave1Orizz][nave1Vert] = '1';
-    coord[nave1Orizz + 1][nave1Vert] = '1';
-    coord[nave1Orizz][nave1Vert + 1] = '1';
-    coord[nave1Orizz + 1][nave1Vert + 1] = '1';
-
-    // Posiziona nave 2
-    do
-    {
-        nave2Orizz = rand() % 7;
-        nave2Vert = rand() % 7;
-    } while (coord[nave2Orizz][nave2Vert] == '1' || coord[nave2Orizz + 1][nave2Vert] == '1' || coord[nave2Orizz][nave2Vert + 1] == '1' || coord[nave2Orizz + 1][nave2Vert + 1] == '1');
-
-    coord[nave2Orizz][nave2Vert] = '2';
-    coord[nave2Orizz + 1][nave2Vert] = '2';
-    coord[nave2Orizz][nave2Vert + 1] = '2';
-    coord[nave2Orizz + 1][nave2Vert + 1] = '2';
-}
-
+//**************************************************************
+//INIZIO CODICE MAIN
+//**************************************************************
 
 int main(){
     srand(time(NULL));
     
 //variabili principali
     
-    char campo1[N][N]={ };
-    char campo2[N][N]={ };
+    char campo1[N][N]={};
+    char campo2[N][N]={};
     char coord[2]={};
     int orientamento=0;
     int lunghezzanave[7]={0,5,4,3,3,2};
@@ -218,7 +198,6 @@ int main(){
         
         if (ok==0){
             cout<<"\n\acoordinate non compatibili per inserimento nave";
-            cin.get();
             premi();
             }
         
@@ -247,6 +226,9 @@ int main(){
 
 
     
+ 
+// inserimento coordinate
+
  
 // inserimento coordinate
 
