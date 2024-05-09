@@ -9,7 +9,7 @@ Note:
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-
+#include <ctime>
 #define N 9 //Dimensione griglia 
 
 using namespace std;
@@ -88,7 +88,7 @@ bool inseriscinave(char campo[N][N],char coord[2],int orient,int lun,int numnave
     
  // Verifica se le coordinate della nave e la lunghezza sono compatibilicon il campo
 
- if (y+lun>N+1 | x+lun>N+1){
+ if (y+lun>N+1 || x+lun>N+1){
     ok=0;
     return ok;
  }   
@@ -134,7 +134,32 @@ bool inseriscinave(char campo[N][N],char coord[2],int orient,int lun,int numnave
     
     return ok;
 }
+void posizionaNavi(char coord[9][9])
+{
+    srand(time(NULL));
+    int nave1Orizz = rand() % 7;
+    int nave1Vert = rand() % 7;
+    int nave2Orizz = rand() % 7;
+    int nave2Vert = rand() % 7;
 
+    // Posiziona nave 1
+    coord[nave1Orizz][nave1Vert] = '1';
+    coord[nave1Orizz + 1][nave1Vert] = '1';
+    coord[nave1Orizz][nave1Vert + 1] = '1';
+    coord[nave1Orizz + 1][nave1Vert + 1] = '1';
+
+    // Posiziona nave 2
+    do
+    {
+        nave2Orizz = rand() % 7;
+        nave2Vert = rand() % 7;
+    } while (coord[nave2Orizz][nave2Vert] == '1' || coord[nave2Orizz + 1][nave2Vert] == '1' || coord[nave2Orizz][nave2Vert + 1] == '1' || coord[nave2Orizz + 1][nave2Vert + 1] == '1');
+
+    coord[nave2Orizz][nave2Vert] = '2';
+    coord[nave2Orizz + 1][nave2Vert] = '2';
+    coord[nave2Orizz][nave2Vert + 1] = '2';
+    coord[nave2Orizz + 1][nave2Vert + 1] = '2';
+}
 int main()
 {
     srand(time(NULL));
@@ -166,7 +191,7 @@ int main()
     stampacampo(campo1,campo2);
     
     cout<<"Inseriamo ora le navi... ti ricordo che dovrai inserire:\n";
-    cout<<"1 nave da 5\n1 navi da 4\n1 navE da 3\n1 nave da2\n";
+    cout<<"1 nave da 5\n1 nave da 4\n2 navi da 3\n1 nave da 2\n";
 
     premi();
     
@@ -219,4 +244,29 @@ int main()
  
 // inserimento coordinate
 
+}void posizionaNavi(char coord[9][9])
+{
+    srand(time(NULL));
+    int nave1Orizz = rand() % 7;
+    int nave1Vert = rand() % 7;
+    int nave2Orizz = rand() % 7;
+    int nave2Vert = rand() % 7;
+
+    // Posiziona nave 1
+    coord[nave1Orizz][nave1Vert] = '1';
+    coord[nave1Orizz + 1][nave1Vert] = '1';
+    coord[nave1Orizz][nave1Vert + 1] = '1';
+    coord[nave1Orizz + 1][nave1Vert + 1] = '1';
+
+    // Posiziona nave 2
+    do
+    {
+        nave2Orizz = rand() % 7;
+        nave2Vert = rand() % 7;
+    } while (coord[nave2Orizz][nave2Vert] == '1' || coord[nave2Orizz + 1][nave2Vert] == '1' || coord[nave2Orizz][nave2Vert + 1] == '1' || coord[nave2Orizz + 1][nave2Vert + 1] == '1');
+
+    coord[nave2Orizz][nave2Vert] = '2';
+    coord[nave2Orizz + 1][nave2Vert] = '2';
+    coord[nave2Orizz][nave2Vert + 1] = '2';
+    coord[nave2Orizz + 1][nave2Vert + 1] = '2';
 }
