@@ -92,7 +92,7 @@ bool inseriscinave(char campo[N][N],char coord[2],int orient,int lun,int numnave
     int y=(coord[0]%32)-1;
     int x=(coord[1]%48)-1;
     bool ok=0;
-    
+    int lung=lun;
  // Verifica se le coordinate della nave e la lunghezza sono compatibilicon il campo
 
  if (y+lun>N || x+lun>N){
@@ -183,52 +183,44 @@ int main(){
     
     for (int i=1;i<6;i++){
 
+        do{
+            stampacampo(campo1,campo2);
+            cout<<"inserisce coordinate nave "<<i<<" ";
+            cin>>coord;
+            cout<<"\ninserire orientamento nave "<<i<<" ";
+            cin>>orientamento;
+            lung=lunghezzanave[i];
+            ok=inseriscinave(campo1,coord,orientamento,lung,i);
+                if (ok==0){
+                cout<<"\n\acoordinate non compatibili per inserimento nave";
+                premi();
+                }
+        }while (ok==0);
+    
+    }
+    
+    cout<<"\nOra devo inserire le navi avversarie....\n";
+    premi();
+ 
+//INSERIMENTO NAVI AVVERSARIO
+
+    inizializzacampo(campo2);
+    
+    for (int i=1;i<6;i++){
     do{
-        stampacampo(campo1,campo2);
-    
-        cout<<"inserisce coordinate nave "<<i<<" ";
-        cin>>coord;
-    
-        cout<<"\ninserire orientamento nave "<<i<<" ";
-        cin>>orientamento;
-    
+        coord[0]=rand()%9+65;
+        coord[1]=rand()%9+49;
+        orientamento=rand()%2;
         lung=lunghezzanave[i];
-    
-        ok=inseriscinave(campo1,coord,orientamento,lung,i);
-        
-        if (ok==0){
-            cout<<"\n\acoordinate non compatibili per inserimento nave";
-            premi();
-            }
+        ok=inseriscinave(campo2,coord,orientamento,lung,i);
         
     }while (ok==0);
     
-    
     }
-   
+    stampacampo(campo1,campo2);
+    
+    
+    
+    
+// Fine programma   
 }
-    
-
-    
-    
-    
-
-    
-    
-//mettere  le navi 
-
-
-
-
-
-//generatore del campo navale
-
-
-
-    
- 
-// inserimento coordinate
-
- 
-// inserimento coordinate
-
