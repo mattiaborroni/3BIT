@@ -164,8 +164,9 @@ void posizionaNavi(char coord[9][9])
     coord[nave2Orizz][nave2Vert + 1] = '2';
     coord[nave2Orizz + 1][nave2Vert + 1] = '2';
 }
-int main()
-{
+
+
+int main(){
     srand(time(NULL));
     
 //variabili principali
@@ -226,6 +227,7 @@ int main()
     
     }
    
+}
     
 
     
@@ -248,29 +250,3 @@ int main()
  
 // inserimento coordinate
 
-}void posizionaNavi(char coord[9][9])
-{
-    srand(time(NULL));
-    int nave1Orizz = rand() % 7;
-    int nave1Vert = rand() % 7;
-    int nave2Orizz = rand() % 7;
-    int nave2Vert = rand() % 7;
-
-    // Posiziona nave 1
-    coord[nave1Orizz][nave1Vert] = '1';
-    coord[nave1Orizz + 1][nave1Vert] = '1';
-    coord[nave1Orizz][nave1Vert + 1] = '1';
-    coord[nave1Orizz + 1][nave1Vert + 1] = '1';
-
-    // Posiziona nave 2
-    do
-    {
-        nave2Orizz = rand() % 7;
-        nave2Vert = rand() % 7;
-    } while (coord[nave2Orizz][nave2Vert] == '1' || coord[nave2Orizz + 1][nave2Vert] == '1' || coord[nave2Orizz][nave2Vert + 1] == '1' || coord[nave2Orizz + 1][nave2Vert + 1] == '1');
-
-    coord[nave2Orizz][nave2Vert] = '2';
-    coord[nave2Orizz + 1][nave2Vert] = '2';
-    coord[nave2Orizz][nave2Vert + 1] = '2';
-    coord[nave2Orizz + 1][nave2Vert + 1] = '2';
-}
