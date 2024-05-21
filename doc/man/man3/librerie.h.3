@@ -1,0 +1,152 @@
+.TH "include/librerie.h" 3 "Mar 21 Mag 2024" "Version 3.0" "BATTAGLIA NAVALE" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/librerie.h
+.SH SYNOPSIS
+.br
+.PP
+.SS "Definizioni"
+
+.in +1c
+.ti -1c
+.RI "#define \fBN\fP   9"
+.br
+.in -1c
+.SS "Funzioni"
+
+.in +1c
+.ti -1c
+.RI "void \fBpulisci\fP ()"
+.br
+.RI "Pulisce lo schermo del terminale\&. "
+.ti -1c
+.RI "void \fBpremi\fP ()"
+.br
+.RI "Fa premere un tasto per continuare\&. "
+.ti -1c
+.RI "void \fBinizializzacampo\fP (char campo[\fBN\fP][\fBN\fP])"
+.br
+.RI "Inizializza il campo di gioco\&. "
+.ti -1c
+.RI "void \fBscritta\fP ()"
+.br
+.RI "Realizza la scritta iniziale del gioco\&. "
+.ti -1c
+.RI "void \fBstampacampo\fP (char campo1[\fBN\fP][\fBN\fP], char campo2[\fBN\fP][\fBN\fP])"
+.br
+.RI "Stampa sul terminale i 2 campi di gioco\&. "
+.ti -1c
+.RI "bool \fBinseriscinave\fP (char campo[\fBN\fP][\fBN\fP], char coord[2], int orient, int lun, int numnave)"
+.br
+.RI "Inserisce nei campi di gioco le navi in modo da prepararsi al gioco\&. "
+.ti -1c
+.RI "void \fBspara\fP (char campo[\fBN\fP][\fBN\fP], char coord[2], int navecolpita[5])"
+.br
+.RI "Procedura per colpire una casella\&. "
+.ti -1c
+.RI "void \fBtabellanavi\fP (int navicolpite1[6], int navicolpite2[6])"
+.br
+.RI "Tabellino resoconto navi colpite\&. "
+.in -1c
+.SH "Documentazione delle definizioni"
+.PP 
+.SS "#define N   9"
+
+.SH "Documentazione delle funzioni"
+.PP 
+.SS "void inizializzacampo (char campo[N][N])"
+
+.PP
+Inizializza il campo di gioco\&. 
+.PP
+\fBParametri\fP
+.RS 4
+\fIcampo\fP sceglie il campo da inizializzare 
+.RE
+.PP
+
+.SS "bool inseriscinave (char campo[N][N], char coord[2], int orient, int lun, int numnave)"
+
+.PP
+Inserisce nei campi di gioco le navi in modo da prepararsi al gioco\&. 
+.PP
+\fBParametri\fP
+.RS 4
+\fIcampo\fP quale campo di gioco 
+.br
+\fIcoord\fP coordinate della nave da posizionare 
+.br
+\fIorient\fP orientamento 0=orizz 1=vert 
+.br
+\fIlun\fP lunghezza della nave 
+.br
+\fInumnave\fP numeor della nave 
+.RE
+.PP
+\fBRestituisce\fP
+.RS 4
+true se la nave viene inserita 
+.PP
+false se la nave non puo' essere inserita 
+.RE
+.PP
+
+.SS "void premi ()"
+
+.PP
+Fa premere un tasto per continuare\&. 
+.SS "void pulisci ()"
+
+.PP
+Pulisce lo schermo del terminale\&. 
+.SS "void scritta ()"
+
+.PP
+Realizza la scritta iniziale del gioco\&. 
+.SS "void spara (char campo[N][N], char coord[2], int navecolpita[5])"
+
+.PP
+Procedura per colpire una casella\&. 
+.PP
+\fBParametri\fP
+.RS 4
+\fIcampo\fP sul quale inviare il colpo 
+.br
+\fIcolpi\fP massimo numero dei colpi 
+.br
+\fIcoord\fP del colpo che spariamo 
+.br
+\fInavecolpita\fP array dell'elenco delle navi colpite 
+.RE
+.PP
+
+.SS "void stampacampo (char campo1[N][N], char campo2[N][N])"
+
+.PP
+Stampa sul terminale i 2 campi di gioco\&. 
+.PP
+\fBParametri\fP
+.RS 4
+\fIcampo1\fP campo di sinistra 
+.br
+\fIcampo2\fP campo di destra 
+.RE
+.PP
+
+.SS "void tabellanavi (int navicolpite1[6], int navicolpite2[6])"
+
+.PP
+Tabellino resoconto navi colpite\&. 
+.PP
+\fBParametri\fP
+.RS 4
+\fInavicolpite1\fP del primo giocatore 
+.br
+\fInavicolpite2\fP del secondo giocatore 
+.RE
+.PP
+
+.SH "Autore"
+.PP 
+Generato automaticamente da Doxygen per BATTAGLIA NAVALE a partire dal codice sorgente\&.
