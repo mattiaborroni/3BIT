@@ -42,7 +42,7 @@ Se come immaginiamo tutto è andato a buon fine nella cartella troverete un file
 
 Per far partire il gioco digitate
 ```bash
-  make run
+   ./Battaglia_navale_3BIT
 ```
 
 ----
